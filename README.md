@@ -21,6 +21,7 @@ Please contribute new websites!
 - Eureka Select
 - Science
 - SpringerLink
+- ACM
 
 ## Screenshots
 

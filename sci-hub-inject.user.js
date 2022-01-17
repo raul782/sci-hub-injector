@@ -150,8 +150,28 @@ function springerLink() {
   }
 }
 
-function getSpringerDoi(url) {
+function acm() {
+  const url = document.location.href;
+  const doi = getAcmDoi(url);
+  const details = document.querySelector(".issue-item__footer-links");
+  details.innerHTML += `
+    <a class="btn--icon simple-tooltip__block--b" href="${sciHubLink(doi)}" title="SciHub">
+      <img width=24 height=24 src="https://sci-hub.se/misc/img/ravenround.gif" style="vertical-align:bottom"/>
+      View On SciHub
+    </a>
+  `;
+}
+
+function decodeFromUrl(url) {
   return decodeURIComponent(url).match(/10.+?[^#]+/)?.[0];
+}
+
+function getAcmDoi(url) {
+  return decodeFromUrl(url)
+}
+
+function getSpringerDoi(url) {
+  return decodeFromUrl(url)
 }
 
 function springerLinkJournal() {
@@ -207,6 +227,8 @@ function addSciHubLink() {
     wiley();
   } else if (url.includes("link.springer.com")) {
     springerLink();
+  } else if (url.includes("dl.acm.org")) {
+    acm();
   }
 }
 
